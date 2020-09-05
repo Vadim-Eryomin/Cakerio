@@ -12,7 +12,7 @@ import ru.timetech.cakegame.enums.CreamType
 open class Cream: Object() {
     lateinit var defaultCreamShape: PolygonShape
     lateinit var type: CreamType
-    private val poly = arrayOf(Vector2(0f, 0f), Vector2(5f, 0f), Vector2(5f, 1f),
+    val poly = arrayOf(Vector2(0f, 0f), Vector2(5f, 0f), Vector2(5f, 1f),
             Vector2(4f, 1f), Vector2(4f, 0f), Vector2(1f, 0f),
             Vector2(1f, 1f), Vector2(0f, 1f), Vector2(0f,0f))
 

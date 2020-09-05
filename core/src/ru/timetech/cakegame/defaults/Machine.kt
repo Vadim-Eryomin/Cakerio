@@ -36,7 +36,6 @@ open class Machine: Object(){
         val cream = Cream()
         creams.get(type)?.let { cream.create(cream.defaultCreamShape, it, type, world) }
         game.objects.add(cream)
-        cream.setPosition(sprite.x + sprite.width / 8, sprite.y - 38f)
         return cream
     }
 
@@ -44,7 +43,6 @@ open class Machine: Object(){
         val coffee = Coffee()
         coffees.get(type)?.let { coffee.create(it, type, world) }
         game.objects.add(coffee)
-        coffee.setPosition(sprite.x + sprite.width / 8, sprite.y - 38f)
         return coffee
     }
 
@@ -52,7 +50,6 @@ open class Machine: Object(){
         val pie = Pie()
         pies.get(type)?.let { pie.create(null, it, type, world) }
         game.objects.add(pie)
-        pie.setPosition(sprite.x + sprite.width / 8, sprite.y - 38f)
         return pie
     }
 

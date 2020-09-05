@@ -1,7 +1,6 @@
 package ru.timetech.cakegame.defaults
 
 import com.badlogic.gdx.graphics.g2d.Sprite
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.Fixture
@@ -15,8 +14,8 @@ class MovingPlatform: Object() {
     val speed = 40f
 
 
-    fun create(sprite: Sprite, world: World, game: CakeGame) {
-        super.create(null, sprite, world)
+    fun create(shape: PolygonShape?, sprite: Sprite, world: World, game: CakeGame) {
+        super.create(shape, sprite, world)
         this.game = game
         this.shape = PolygonShape()
         (this.shape as PolygonShape).setAsBox(sprite.width / 2f, sprite.height / 2f)
@@ -54,10 +53,5 @@ class MovingPlatform: Object() {
                 }
             }
         }
-    }
-
-    override fun render(batch: SpriteBatch) {
-        this.update()
-        super.render(batch)
     }
 }

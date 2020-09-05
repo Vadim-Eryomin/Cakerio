@@ -10,6 +10,7 @@ class StrawberryPieMachine(var strawberryPieAsset: Sprite): Machine(){
     }
 
     override fun work() {
-        spawnElement(PieType.STRAWBERRY)
+        val pie = spawnElement(PieType.STRAWBERRY)
+        pie.setPosition(sprite.x + sprite.width / 8, sprite.y - 38f)
     }
 }

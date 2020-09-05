@@ -20,36 +20,39 @@ import ru.timetech.cakegame.machines.StrawberryPieMachine
 
 class CakeGame: MyWorld(){
     lateinit var machine: Machine
+    lateinit var machineTexture: Texture
     lateinit var platform: MovingPlatform
-
-    private var machineTexture = Texture(Gdx.files.internal("machine.bmp"))
-    private var transporterTexture = Texture(Gdx.files.internal("transporter.bmp"))
-
     override fun create() {
         super.create()
         Gdx.input.inputProcessor = InputListener(this)
+        machineTexture = Texture(Gdx.files.internal("machine.bmp"))
 
-//        machine = StrawberryPieMachine(strawberryPieAsset = Sprite(Texture(Gdx.files.internal("strawberryPie.bmp"))))
-//        machine.create(Sprite(machineTexture), world, this)
-//        machine.setPosition(500f, 500f)
-//
-//        platform = MovingPlatform()
-//        platform.create(Sprite(transporterTexture), world, this)
-//        platform.setPosition(500f, 100f)
+        machine = StrawberryPieMachine(Sprite(Texture(Gdx.files.internal("strawberryPie.bmp"))))
+        machine.create(Sprite(machineTexture), world, this)
+        machine.setPosition(500f, 500f)
+
+        platform = MovingPlatform()
+        platform.create(null, Sprite(Texture(Gdx.files.internal("transporter.bmp"))), world, this)
+        platform.setPosition(500f, 100f)
     }
 
     override fun render() {
         super.render()
+        platform.update()
         batch.begin()
-
         machine.render(batch)
-        objects.forEach{it.render(batch)}
+        objects.forEach {
+            it.render(batch)
+        }
         platform.render(batch)
-
         batch.end()
     }
 
     override fun resize(width: Int, height: Int) {
         camera.setToOrtho(true, width.toFloat(), height.toFloat())
+    }
+
+    override fun dispose() {
+        super.dispose()
     }
 }
